@@ -1,6 +1,7 @@
-package com.toury.libcore.security;
+package com.toury.libcore.config;
 
 
+import com.toury.libcore.security.JwtAuthorizationFilter;
 import com.toury.libcore.security.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
