@@ -19,23 +19,17 @@ import static com.mongodb.client.model.Filters.eq;
 
 @Configuration
 @Slf4j
-@ConfigurationProperties(prefix="spring.datasource")
 public class MongoDbConfig {
 
-//    @Value("${mongodb.username}")
-    private String userName;
-
-//    @Value("${mongodb.password}")
-    private String password;
-
-//    @Value("${mongodb.host}")
-    private String host;
-
-    private static final String CONNECTION_STRING = "mongodb+srv://bhagyaprfeb23:SACi9ItCVws0rQDh@cluster0.crzd1jf.mongodb.net/?retryWrites=true&w=majority";
+    @Bean
+    public DBProperties getDBProperties() {
+        return new DBProperties();
+    }
 
     @Bean
     public MongoClient getMongoDbConnection() {
-        log.info("Attempting database connection! user: {} host:{} pw:{}", userName, host, password);
+        String CONNECTION_STRING = "mongodb+srv://" + this.getDBProperties().getUserName() + ":" + this.getDBProperties().getPassword() + "@" + this.getDBProperties().getHost() + "/?retryWrites=true&w=majority";
+        log.info("Attempting database connection!");
         MongoClient mongoClient;
         try {
             mongoClient = MongoClients.create(CONNECTION_STRING);
