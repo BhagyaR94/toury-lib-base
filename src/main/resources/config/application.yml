@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    mongodb:
+      password: SACi9ItCVws0rQDh
+      host: cluster0.crzd1jf.mongodb.net
+      username: bhagyaprfeb23
